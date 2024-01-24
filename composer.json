@@ -1,0 +1,49 @@
+{
+    "name": "mentordosnerds/phpinfo-request-handler",
+    "description": "phpinfo PSR-15 Request Handler",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Felipe Sayão Lobato Abreu",
+            "email": "github@mentordosnerds.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "psr/container": "^1.0 || ^2.0",
+        "psr/http-factory": "^1.0",
+        "psr/http-server-handler": "^1.0"
+    },
+    "require-dev": {
+        "coisa/php-cs-fixer": "^2.1",
+        "container-interop/service-provider": "^0.4.1",
+        "php-parallel-lint/php-parallel-lint": "^1.3",
+        "phpunit/phpunit": "^10.5"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "MentorDosNerds\\PhpInfo\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laminas": {
+            "config-provider": "MentorDosNerds\\PhpInfo\\ConfigProvider"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@lint",
+            "@test",
+            "@cs-check"
+        ],
+        "cs-check": "php-cs-fixer fix --dry-run --diff --config .php-cs-fixer.dist.php",
+        "cs-fix": "php-cs-fixer fix --config .php-cs-fixer.dist.php",
+        "lint": "parallel-lint --exclude vendor .",
+        "test": "phpunit --color=always"
+    }
+}
